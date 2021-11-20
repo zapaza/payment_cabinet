@@ -1,0 +1,9 @@
+body {
+  min-height: 100vh;
+}
+
+.sitepage {
+  display: grid;
+  grid-template-rows: minmax(0, 100px) 1fr minmax(0, 100px);
+  min-height: 100vh;
+}

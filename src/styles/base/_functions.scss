@@ -1,0 +1,29 @@
+@use './variables' as v;
+
+@function get($map, $name) {
+  @if ($map == 'colors') {
+    @return map-get(v.$colors, $name);
+  } @else if ($map == 'fontWeight') {
+    @return map-get(v.$fontWeight, $name);
+  }
+}
+
+
+@function get-value($map, $name, $breakpoint: 375) {
+  @if (type-of(map-get($map, $name)) == map and map-has-key(map-get($map, $name), $breakpoint)) {
+      @return map-get(map-get($map, $name), $breakpoint);
+  } @else {
+      @return map-get($map, $name);
+  }
+}
+
+
+@function str-replace($string, $search, $replace: '') {
+  $index: str-index($string, $search);
+
+  @if $index {
+    @return str-slice($string, 1, $index - 1) + $replace + str-replace(str-slice($string, $index + str-length($search)), $search, $replace);
+  }
+
+  @return $string;
+}

@@ -1,0 +1,13 @@
+.container,
+.container-fluid {
+  @include m.make-container();
+}
+
+@each $breakpoint, $container-max-width in $grid-breakpoints {
+  @include m.media-breakpoint-up($breakpoint, $grid-breakpoints) {
+
+    .container {
+      max-width: $container-max-width;
+    }
+  }
+}

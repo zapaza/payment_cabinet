@@ -1,0 +1,15 @@
+$header: (
+  'color': (
+    375: f.get('colors', 'gray-600'),
+    560: f.get('colors', 'white')
+  )
+);
+
+.header {
+  $block: &;
+
+  @include m.get-mq-map('color', $header, 'color');
+
+  background-color: f.get('colors', 'black');
+  min-height: 100px;
+}
